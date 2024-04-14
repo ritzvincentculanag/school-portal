@@ -45,6 +45,9 @@ class AcademicYear(models.Model):
     start_year = models.IntegerField(unique=True, null=False, blank=False)
     end_year = models.IntegerField(unique=True, null=False, blank=False)
 
+    class Meta:
+        unique_together = ('start_year', 'end_year')
+
     def __str__(self):
         return f"{self.start_year}-{self.end_year}"
 
