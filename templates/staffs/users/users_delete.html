@@ -15,7 +15,7 @@
             <p class="fs-2">Delete user</p>
             <form action="" method="post">
                 {% csrf_token %}
-                <p>Are you sure you want to delete student <strong>{{ user.get_full_name }}</strong>?</p>
+                <p>Are you sure you want to delete the user <strong>{{ user.get_full_name }}</strong>?</p>
 
                 <button class="btn btn-danger" type="submit">Delete</button>
                 <a href="{% url 'users_list' %}" class="btn btn-primary">Abort</a>

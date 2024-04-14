@@ -2,6 +2,7 @@ from django.urls import path
 
 from .views_users import *
 from .views_subjects import *
+from .views_semesters import *
 
 urlpatterns = [
     # Users
@@ -15,4 +16,10 @@ urlpatterns = [
     path("subjects/create/", SubjectCreateView.as_view(), name="subjects_create"),
     path("subjects/update/<int:pk>/", SubjectUpdateView.as_view(), name="subjects_update"),
     path("subjects/delete/<int:pk>/", SubjectDeleteView.as_view(), name="subjects_delete"),
+
+    # Semesters
+    path("semesters/", SemesterListView.as_view(), name="semesters_list"),
+    path("semesters/create/", SemesterCreateView.as_view(), name="semesters_create"),
+    path("semesters/update/<int:pk>/", SemesterUpdateView.as_view(), name="semesters_update"),
+    path("semesters/delete/<int:pk>/", SemesterDeleteView.as_view(), name="semesters_delete"),
 ]

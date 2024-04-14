@@ -1,0 +1,37 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+    Semesters
+{% endblock %}
+
+{% block links %}
+    <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
+    <a href="{% url 'subjects_list' %}" class="btn text-start py-3">Subjects</a>
+    <a href="{% url 'semesters_list' %}" class="btn btn-primary text-start py-3">Semesters</a>
+{% endblock %}
+
+{% block data %}
+    <p class="fs-2">Semesters</p>
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-auto ms-auto">
+            <a href="{% url 'semesters_create' %}" class="btn btn-primary" type="submit">Create subject</a>
+        </div>
+    </form>
+    <table class="table table-striped">
+        <tr class="thead">
+            <th scope="col">Semester</th>
+            <th scope="col">Academic Year</th>
+            <th scope="col">Actions</th>
+        </tr>
+        {% for semester in semesters %}
+            <tr>
+                <td>{{ semester.semester }}</td>
+                <td>{{ semester.academic_year }}</td>
+                <td>
+                    <a href="{% url 'semesters_update' semester.pk %}" class="link link-primary">Update</a>
+                    <a href="{% url 'semesters_delete' semester.pk %}" class="link link-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
