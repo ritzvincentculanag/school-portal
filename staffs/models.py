@@ -2,6 +2,19 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+class Subject(models.Model):
+    code = models.CharField(max_length=20, unique=True, null=False, blank=False)
+    title = models.CharField(max_length=255, unique=True, blank=False, null=False)
+    date_pub = models.DateTimeField(auto_now_add=True)
+    date_mod = models.DateTimeField(auto_now=True)
+    units = models.SmallIntegerField(null=False, blank=False)
+    lec_hours = models.SmallIntegerField(null=False, blank=False)
+    lab_hours = models.SmallIntegerField(null=False, blank=False)
+
+    def __str__(self):
+        return f"{self.title[:55]}"
+
+
 class CustomUser(AbstractUser):
     UTYPE_STU = "STU"
     UTYPE_TEA = "TEA"
@@ -15,6 +28,7 @@ class CustomUser(AbstractUser):
         (UTYPE_STA, "Staff")
     )
 
+    subjects = models.ManyToManyField(to=Subject, related_name="subjects")
     utype = models.CharField(
         max_length=20,
         choices=UTYPES,
@@ -22,6 +36,9 @@ class CustomUser(AbstractUser):
         null=False,
         blank=False
     )
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
 
 class AcademicYear(models.Model):
@@ -66,4 +83,4 @@ class Advertisement(models.Model):
     title = models.CharField(max_length=512, null=False, blank=False)
     author = models.ForeignKey(to=CustomUser, related_name="author", on_delete=models.CASCADE)
     date_pub = models.DateTimeField(auto_now_add=True)
-    date_upd = models.DateTimeField(auto_now_add=True)
+    date_mod = models.DateTimeField(auto_now=True)
