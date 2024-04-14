@@ -11,5 +11,8 @@ urlpatterns = [
     path("users/delete/<int:pk>/", CustomUserDeleteView.as_view(), name="users_delete"),
 
     # Subjects
-    path("subjects/", SubjectListView.as_view(), name="subjects_list")
+    path("subjects/", SubjectListView.as_view(), name="subjects_list"),
+    path("subjects/create/", SubjectCreateView.as_view(), name="subjects_create"),
+    path("subjects/update/<int:pk>/", SubjectUpdateView.as_view(), name="subjects_update"),
+    path("subjects/delete/<int:pk>/", SubjectDeleteView.as_view(), name="subjects_delete"),
 ]

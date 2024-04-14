@@ -3,24 +3,21 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Students
+    Delete subject
 {% endblock %}
 
 {% block links %}
     <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
     <a href="{% url 'subjects_list' %}" class="btn btn-primary text-start py-3">Subjects</a>
-    <a href="{% url 'tuitions_list' %}" class="btn text-start py-3">Tuition</a>
-    <a href="{% url 'payments_list' %}" class="btn text-start py-3">Payment</a>
-    <a href="{% url 'advertisements_list' %}" class="btn text-start py-3">Advertisements</a>
 {% endblock %}
 
 {% block data %}
     <div class="row justify-content-center">
         <div class="col-8">
-            <p class="fs-2">Delete Student</p>
+            <p class="fs-2">Delete subject</p>
             <form action="{% url 'subjects_delete' subject.pk %}" method="post">
                 {% csrf_token %}
-                <p>Are you sure you want to delete the subject <strong>{{ subject.name }}</strong>?</p>
+                <p>Are you sure you want to delete the subject <strong>{{ subject.title }}</strong>?</p>
 
                 <button class="btn btn-danger" type="submit">Delete</button>
                 <a href="{% url 'subjects_list' %}" class="btn btn-primary">Abort</a>

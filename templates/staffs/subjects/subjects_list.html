@@ -19,7 +19,7 @@
         </div>
         <div class="col-auto">
             <button class="btn btn-outline-primary" type="submit">Search</button>
-            <a href="" class="btn btn-primary" type="submit">Add Subject</a>
+            <a href="{% url 'subjects_create' %}" class="btn btn-primary" type="submit">Create subject</a>
         </div>
     </form>
 
@@ -40,8 +40,8 @@
                 <td>{{ subject.lec_hours }}</td>
                 <td>{{ subject.lab_hours }}</td>
                 <td>
-                    <a href="" class="link link-primary">Edit</a>
-                    <a href="" class="link link-danger">Delete</a>
+                    <a href="{% url 'subjects_update' subject.pk %}" class="link link-primary">Update</a>
+                    <a href="{% url 'subjects_delete' subject.pk %}" class="link link-danger">Delete</a>
                 </td>
             </tr>
         {% endfor %}

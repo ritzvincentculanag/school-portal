@@ -3,21 +3,18 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Students
+    Create subject
 {% endblock %}
 
 {% block links %}
     <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
     <a href="{% url 'subjects_list' %}" class="btn btn-primary text-start py-3">Subjects</a>
-    <a href="{% url 'tuitions_list' %}" class="btn text-start py-3">Tuition</a>
-    <a href="{% url 'payments_list' %}" class="btn text-start py-3">Payment</a>
-    <a href="{% url 'advertisements_list' %}" class="btn text-start py-3">Advertisements</a>
 {% endblock %}
 
 {% block data %}
     <div class="row justify-content-center">
         <div class="col-8">
-            <p class="fs-2">Add Student</p>
+            <p class="fs-2">Create student</p>
             <form action="{% url 'subjects_create' %}" method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
