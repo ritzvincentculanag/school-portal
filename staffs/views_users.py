@@ -43,3 +43,10 @@ class CustomUserUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
     success_url = reverse_lazy("users_list")
     context_object_name = "user"
     template_name = "staffs/users/users_update.html"
+
+
+class CustomUserDeleteView(LoginRequiredMixin, StaffRequiredMixin, DeleteView):
+    model = CustomUser
+    context_object_name = 'user'
+    template_name = 'staffs/users/users_delete.html'
+    success_url = reverse_lazy('users_list')

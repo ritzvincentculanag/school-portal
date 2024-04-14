@@ -45,7 +45,7 @@
                 <td>
                     <a href="" class="link link-primary">View</a>
                     <a href="{% url 'users_update' user.pk %}" class="link link-primary">Edit</a>
-                    <a href="" class="link link-danger">Delete</a>
+                    <a href="{% url 'users_delete' user.pk %}" class="link link-danger">Delete</a>
                 </td>
             </tr>
         {% endfor %}
