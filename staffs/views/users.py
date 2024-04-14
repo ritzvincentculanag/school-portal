@@ -6,7 +6,7 @@ from django.views.generic import *
 from staffs.forms import CustomUserCreationForm, CustomUserUpdateForm
 from staffs.models import CustomUser
 
-from .mixins import StaffRequiredMixin
+from staffs.mixins import StaffRequiredMixin
 
 
 class CustomUserListView(LoginRequiredMixin, StaffRequiredMixin, ListView):

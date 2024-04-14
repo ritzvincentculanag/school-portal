@@ -1,0 +1,30 @@
+{% extends 'dashboard.html' %}
+
+
+{% block links %}
+    <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
+    <a href="{% url 'subjects_list' %}" class="btn text-start py-3">Subjects</a>
+    <a href="{% url 'tuitions_list' %}" class="btn text-start py-3">Tuition</a>
+    <a href="{% url 'payments_list' %}" class="btn text-start py-3">Payment</a>
+    <a href="{% url 'advertisements_list' %}" class="btn btn-primary text-start py-3">Advertisements</a>
+{% endblock %}
+
+
+{% block title %}
+    DHCP
+{% endblock %}
+
+{% block data %}
+    {% if advertisement.banner %}
+        <img style="height: 400px"
+             src="{{ advertisement.banner.url }}"
+             class="card-img-top mh-25 mb-4 object-fit-cover"
+             alt="{{ advertisement.title }}">
+    {% endif %}
+
+    <h3 class="fs-1">{{ advertisement.title }}</h3>
+    <h5>Date published: {{ advertisement.date_pub }}</h5>
+    <h5>Last updated: {{ advertisement.date_mod }}</h5>
+    <br>
+    <p>{{ advertisement.content }}</p>
+{% endblock %}

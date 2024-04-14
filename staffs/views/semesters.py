@@ -4,7 +4,7 @@ from django.views.generic import *
 
 from staffs.models import Semester
 
-from .mixins import StaffRequiredMixin
+from staffs.mixins import StaffRequiredMixin
 
 
 class SemesterListView(LoginRequiredMixin, StaffRequiredMixin, ListView):

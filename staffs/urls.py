@@ -1,8 +1,8 @@
 from django.urls import path
 
-from .views_users import *
-from .views_subjects import *
-from .views_semesters import *
+from staffs.views.users import *
+from staffs.views.subjects import *
+from staffs.views.semesters import *
 
 urlpatterns = [
     # Users

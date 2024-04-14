@@ -4,7 +4,7 @@ from django.views.generic import *
 
 from staffs.models import Subject
 
-from .mixins import StaffRequiredMixin
+from staffs.mixins import StaffRequiredMixin
 
 
 class SubjectListView(LoginRequiredMixin, StaffRequiredMixin, ListView):

@@ -1,0 +1,28 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+	Delete | {{ advertisement.title }}
+{% endblock %}
+
+{% block links %}
+    <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
+    <a href="{% url 'subjects_list' %}" class="btn text-start py-3">Subjects</a>
+    <a href="{% url 'tuitions_list' %}" class="btn text-start py-3">Tuition</a>
+    <a href="{% url 'payments_list' %}" class="btn text-start py-3">Payment</a>
+    <a href="{% url 'advertisements_list' %}" class="btn btn-primary text-start py-3">Advertisements</a>
+{% endblock %}
+
+{% block data %}
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <p class="fs-2">Delete Advertisement</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <p>Are you sure you want to delete <strong>{{ advertisement.title }}</strong>?</p>
+
+                <button class="btn btn-danger" type="submit">Delete</button>
+                <a href="{% url 'advertisements_list' %}" class="btn btn-primary">Abort</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
