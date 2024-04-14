@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(Payment)
 admin.site.register(PaymentCategory)
+admin.site.register(Tuition)

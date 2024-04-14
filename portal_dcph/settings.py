@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     "students.apps.StudentsConfig",
     "teachers.apps.TeachersConfig",
     "staffs.apps.StaffsConfig",
-    "cashiers.apps.CashiersConfig"
+    "cashiers.apps.CashiersConfig",
+    "accounts.apps.AccountsConfig"
 ]
 
 MIDDLEWARE = [
@@ -144,8 +145,6 @@ CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # Login and logout redirect defaults
-
-LOGIN_REDIRECT_URL = "users_list"
 
 LOGOUT_REDIRECT_URL = 'login'
 

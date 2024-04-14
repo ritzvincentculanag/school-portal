@@ -1,6 +1,6 @@
 from django.db import models
 
-from staffs.models import CustomUser, Subject
+from staffs.models import CustomUser, Subject, Semester
 
 
 class SubjectGrade(models.Model):
@@ -8,6 +8,13 @@ class SubjectGrade(models.Model):
     midterm = models.DecimalField(max_digits=4, decimal_places=2, default=0.00)
     prefinal = models.DecimalField(max_digits=4, decimal_places=2, default=0.00)
     final = models.DecimalField(max_digits=4, decimal_places=2, default=0.00)
+    semester = models.ForeignKey(
+        to=Semester,
+        related_name="sem",
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+    )
     student = models.ForeignKey(
         to=CustomUser,
         related_name="student",

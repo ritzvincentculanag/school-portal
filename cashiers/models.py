@@ -1,6 +1,31 @@
 from django.db import models
 
-from staffs.models import CustomUser
+from staffs.models import CustomUser, AcademicYear, Semester
+
+
+class Tuition(models.Model):
+    amount = models.DecimalField(max_digits=9, decimal_places=2, null=False)
+    user = models.ForeignKey(
+        to=CustomUser,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+        limit_choices_to={
+            "utype": "STU"
+        }
+    )
+    semester = models.ForeignKey(
+        to=Semester,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False
+    )
+
+    class Meta:
+        unique_together = ('user', 'semester')
+
+    def __str__(self):
+        return f"{self.user}'s tuition for {self.semester}"
 
 
 class PaymentCategory(models.Model):
