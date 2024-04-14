@@ -1,0 +1,75 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+    {{ student.get_full_name }}
+{% endblock title %}
+
+{% block links %}
+    <a href="{% url 'users_list' %}" class="btn btn-primary text-start py-3">Users</a>
+    <a href="{% url 'subjects_list' %}" class="btn text-start py-3">Subjects</a>
+    <a href="{% url 'tuitions_list' %}" class="btn text-start py-3">Tuition</a>
+    <a href="{% url 'payments_list' %}" class="btn text-start py-3">Payment</a>
+    <a href="{% url 'advertisements_list' %}" class="btn text-start py-3">Advertisements</a>
+{% endblock %}
+
+{% block data %}
+    <div class="row justify-content">
+        <div class="col">
+            <p class="fs-2">{{ student.get_full_name }}</p>
+            <p class="lead">Username: {{ student.username }}</p>
+            <p class="lead">Email: {{ student.email }}</p>
+        </div>
+        <div class="col">
+            <p class="fs-2">Balance</p>
+            <p class="fs-1 bg-warning px-3 py-2">P{{ remaining_balance }}</p>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col">
+            <p class="fs-4">Subjects</p>
+            <table class="table table-striped mb-5">
+                <tr class="thead">
+                    <th scope="col">Name</th>
+                    <th scope="col">Unit</th>
+                </tr>
+                {% for subject in subjects %}
+                    <tr>
+                        <td>{{ subject.name }}</td>
+                        <td>{{ subject.unit }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <th>Total units</th>
+                    <th>{{ total_units }}</th>
+                </tr>
+            </table>
+        </div>
+        <div class="col">
+            <p class="fs-4">Payment History</p>
+            <table class="table table-striped">
+                <tr class="thead">
+                    <th scope="col">Date</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Amount</th>
+                </tr>
+                {% for payment in payments %}
+                    <tr>
+                        <td>{{ payment.date_paid }}</td>
+                        <td>{{ payment.payment_category.name }}</td>
+                        <td>P{{ payment.amount }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <th>Total</th>
+                    <th></th>
+                    <th>P{{ total_paid }}</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+{% endblock data %}
