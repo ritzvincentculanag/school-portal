@@ -1,0 +1,55 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+    Payments
+{% endblock %}
+
+{% block links %}
+    <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
+    <a href="{% url 'subjects_list' %}" class="btn text-start py-3">Subjects</a>
+    <a href="{% url 'tuitions_list' %}" class="btn text-start py-3">Tuition</a>
+    <a href="{% url 'payments_list' %}" class="btn btn-primary text-start py-3">Payment</a>
+    <a href="{% url 'advertisements_list' %}" class="btn text-start py-3">Advertisements</a>
+{% endblock %}
+
+{% block data %}
+    <p class="fs-2">Payments</p>
+
+    <form method="get" class="row g-3 mb-4">
+        <div class="col d-flex align-items-center">
+            <select class="form-select" aria-label="Default select example" name="semester">
+                {% for semester in semesters %}
+                    <option value="{{ semester.pk }}">{{ semester }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <a href="{% url 'payments_create' %}" class="btn btn-primary" type="submit">Add Payments</a>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <tr class="thead">
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Category</th>
+            <th scope="col">Actions</th>
+        </tr>
+        {% for payment in payments %}
+            <tr>
+                <td>{{ payment.user.first_name }}</td>
+                <td>{{ payment.user.last_name }}</td>
+                <td>{{ payment.user.username }}</td>
+                <td>P{{ payment.amount }}</td>
+                <td>{{ payment.payment_category.name }}</td>
+                <td>
+                    <a href="{% url 'payments_update' payment.pk %}" class="link link-primary">Edit</a>
+                    <a href="{% url 'payments_delete' payment.pk %}" class="link link-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+    Students
+{% endblock %}
+
+{% block links %}
+    <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
+    <a href="{% url 'subjects_list' %}" class="btn text-start py-3">Subjects</a>
+    <a href="{% url 'tuitions_list' %}" class="btn btn-primary text-start py-3">Tuition</a>
+    <a href="{% url 'payments_list' %}" class="btn text-start py-3">Payment</a>
+    <a href="{% url 'advertisements_list' %}" class="btn text-start py-3">Advertisements</a>
+{% endblock %}
+
+{% block data %}
+    <p class="fs-2">Tuitions</p>
+
+    <form method="get" class="row g-3 mb-4">
+        <div class="col d-flex">
+            <label for="students_search" class="form-label"></label>
+            <input type="text" placeholder="Search" class="form-control" name="student_search" id="students_search">
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <a href="{% url 'tuitions_create' %}" class="btn btn-primary" type="submit">Add Tuition</a>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <tr class="thead">
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Semester</th>
+            <th scope="col">Actions</th>
+        </tr>
+        {% for tuition in tuitions %}
+            {% if not student.is_staff %}
+                <tr>
+                    <td>{{ tuition.user.first_name }}</td>
+                    <td>{{ tuition.user.last_name }}</td>
+                    <td>{{ tuition.user.username }}</td>
+                    <td>P{{ tuition.amount }}</td>
+                    <td>{{ tuition.semester }}</td>
+                    <td>
+                        <a href="{% url 'tuitions_update' tuition.pk %}" class="link link-primary">Edit</a>
+                        <a href="{% url 'tuitions_delete' tuition.pk %}" class="link link-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}
