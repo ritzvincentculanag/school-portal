@@ -145,7 +145,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # Login and logout redirect defaults
 
-LOGIN_REDIRECT_URL = "user_list"
+LOGIN_REDIRECT_URL = "users_list"
 
 LOGOUT_REDIRECT_URL = 'login'
 

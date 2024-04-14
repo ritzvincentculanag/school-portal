@@ -3,6 +3,7 @@ from django.urls import path
 from staffs.views.users import *
 from staffs.views.subjects import *
 from staffs.views.semesters import *
+from staffs.views.advertisements import *
 
 urlpatterns = [
     # Users
@@ -22,4 +23,11 @@ urlpatterns = [
     path("semesters/create/", SemesterCreateView.as_view(), name="semesters_create"),
     path("semesters/update/<int:pk>/", SemesterUpdateView.as_view(), name="semesters_update"),
     path("semesters/delete/<int:pk>/", SemesterDeleteView.as_view(), name="semesters_delete"),
+
+    # Advertisements
+    path('advertisements/', AdvertisementListView.as_view(), name='advertisements_list'),
+    path('advertisements/create/', AdvertisementCreateView.as_view(), name='advertisements_create'),
+    path('advertisements/update/<int:pk>/', AdvertisementUpdateView.as_view(), name='advertisements_update'),
+    path('advertisements/detail/<int:pk>/', AdvertisementDetailView.as_view(), name='advertisements_detail'),
+    path('advertisements/delete/<int:pk>/', AdvertisementDeleteView.as_view(), name='advertisements_delete'),
 ]

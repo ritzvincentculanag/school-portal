@@ -84,6 +84,10 @@ class Semester(models.Model):
 class Advertisement(models.Model):
     banner = models.ImageField(upload_to="advertisement_banners/", blank=True, null=True)
     title = models.CharField(max_length=512, null=False, blank=False)
+    content = models.TextField(null=False, blank=False)
     author = models.ForeignKey(to=CustomUser, related_name="author", on_delete=models.CASCADE)
     date_pub = models.DateTimeField(auto_now_add=True)
     date_mod = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title[:55]

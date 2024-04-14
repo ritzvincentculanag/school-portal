@@ -8,13 +8,12 @@
 {% block links %}
     <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
     <a href="{% url 'subjects_list' %}" class="btn text-start py-3">Subjects</a>
-    <a href="{% url 'tuitions_list' %}" class="btn text-start py-3">Tuition</a>
-    <a href="{% url 'payments_list' %}" class="btn text-start py-3">Payment</a>
+    <a href="{% url 'semesters_list' %}" class="btn text-start py-3">Semesters</a>
     <a href="{% url 'advertisements_list' %}" class="btn btn-primary text-start py-3">Advertisements</a>
 {% endblock %}
 
 {% block data %}
-    <p class="fs-2">Latest news</p>
+    <p class="fs-2">Advertisements</p>
 
     <form method="get" class="row g-3 mb-4">
         <div class="col d-flex">
@@ -42,7 +41,7 @@
                         <h6 class="card-subtitle">{{ advertisement.date_pub }}</h6>
                         <br>
                         <p class="card-text">{{ advertisement.content|slice:":255" }}</p>
-                        <a href="{% url 'advertisements_update' advertisement.pk %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'advertisements_update' advertisement.pk %}" class="btn btn-primary">Update</a>
                         <a href="{% url 'advertisements_detail' advertisement.pk %}" class="btn btn-primary">View</a>
                         <a href="{% url 'advertisements_delete' advertisement.pk %}" class="btn btn-danger">Delete</a>
                     </div>

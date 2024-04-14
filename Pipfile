@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 django = "4.2.0"
-whitenoise = "*"
+whitenoise = "5.3.0"
 django_crispy_forms = "*"
 crispy_bootstrap5 = "*"
 Pillow = "*"
