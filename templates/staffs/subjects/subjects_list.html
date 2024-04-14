@@ -1,0 +1,49 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+    Subjects
+{% endblock %}
+
+{% block links %}
+    <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
+    <a href="{% url 'subjects_list' %}" class="btn btn-primary text-start py-3">Subjects</a>
+{% endblock %}
+
+{% block data %}
+    <p class="fs-2">Subjects</p>
+
+    <form method="get" class="row g-3 mb-4">
+        <div class="col d-flex">
+            <label for="subjects_search" class="form-label"></label>
+            <input type="text" placeholder="Search" class="form-control" name="subjects_search" id="subjects_search">
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <a href="" class="btn btn-primary" type="submit">Add Subject</a>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <tr class="thead">
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Units</th>
+            <th scope="col">Lec Hours</th>
+            <th scope="col">Lab Hours</th>
+            <th scope="col">Actions</th>
+        </tr>
+        {% for subject in subjects %}
+            <tr>
+                <td>{{ subject.code }}</td>
+                <td>{{ subject.title }}</td>
+                <td>{{ subject.units }}</td>
+                <td>{{ subject.lec_hours }}</td>
+                <td>{{ subject.lab_hours }}</td>
+                <td>
+                    <a href="" class="link link-primary">Edit</a>
+                    <a href="" class="link link-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
