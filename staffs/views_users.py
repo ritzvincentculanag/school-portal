@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
+from django.urls import reverse_lazy
 from django.views.generic import *
 
+from staffs.forms import CustomUserCreationForm
 from staffs.models import CustomUser
 
 
@@ -24,3 +26,10 @@ class CustomUserListView(LoginRequiredMixin, ListView):
             )
 
         return users
+
+
+class CustomUserCreateView(LoginRequiredMixin, CreateView):
+    model = CustomUser
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy("users_list")
+    template_name = "staffs/users/users_create.html"
