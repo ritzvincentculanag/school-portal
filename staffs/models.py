@@ -32,7 +32,6 @@ class CustomUser(AbstractUser):
     utype = models.CharField(
         max_length=20,
         choices=UTYPES,
-        default=UTYPE_STA,
         null=False,
         blank=False
     )

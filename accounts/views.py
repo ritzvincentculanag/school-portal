@@ -6,20 +6,25 @@ from staffs.models import Advertisement
 
 # Create your views here.
 class CustomLoginView(LoginView):
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            if request.user.is_staff:
-                return redirect('users_list')
-            else:
-                return redirect('students_subjects_list')
-
-        return super().get(request, *args, **kwargs)
+    # def get(self, request, *args, **kwargs):
+    #     if request.user.is_authenticated:
+    #         if request.user.is_staff:
+    #             return redirect('users_list')
+    #         else:
+    #             return redirect('students_subjects_list')
+    #
+    #     return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
         if form.is_valid():
             super().form_valid(form)
 
-            if form.get_user().is_staff:
+            print(form.get_user())
+            if form.get_user().utype == "CAS":
+                return redirect('payments_list')
+            elif form.get_user().utype == "STA":
+                return redirect('users_list')
+            elif form.get_user().utype == "TEA":
                 return redirect('users_list')
             else:
                 return redirect('students_subjects_list')

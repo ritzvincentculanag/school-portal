@@ -7,7 +7,7 @@
 {% block links %}
     <a href="{% url 'users_list' %}" class="btn text-start py-3">Users</a>
     <a href="{% url 'subjects_list' %}" class="btn text-start py-3">Subjects</a>
-    <a href="{% url 'tuitions_list' %}" class="btn text-start py-3">Tuition</a>
+{#    <a href="{% url 'tuitions_list' %}" class="btn text-start py-3">Tuition</a>#}
     <a href="{% url 'payments_list' %}" class="btn btn-primary text-start py-3">Payment</a>
     <a href="{% url 'advertisements_list' %}" class="btn text-start py-3">Advertisements</a>
 {% endblock %}
@@ -40,11 +40,11 @@
         </tr>
         {% for payment in payments %}
             <tr>
-                <td>{{ payment.user.first_name }}</td>
-                <td>{{ payment.user.last_name }}</td>
-                <td>{{ payment.user.username }}</td>
+                <td>{{ payment.payee.first_name }}</td>
+                <td>{{ payment.payee.last_name }}</td>
+                <td>{{ payment.payee.username }}</td>
                 <td>P{{ payment.amount }}</td>
-                <td>{{ payment.payment_category.name }}</td>
+                <td>{{ payment.category.category }}</td>
                 <td>
                     <a href="{% url 'payments_update' payment.pk %}" class="link link-primary">Edit</a>
                     <a href="{% url 'payments_delete' payment.pk %}" class="link link-danger">Delete</a>

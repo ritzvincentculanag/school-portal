@@ -6,7 +6,7 @@
 
 {% block links %}
     <a href="{% url 'students_subjects_list' %}" class="btn btn-primary text-start py-3">Subjects</a>
-{#    <a href="{% url 'students_payments_list' %}" class="btn text-start py-3">Payments</a>{% endblock %}#}
+    <a href="{% url 'students_payments_list' %}" class="btn text-start py-3">Payments</a>
 {% endblock %}
 
 {% block data %}
@@ -14,7 +14,7 @@
         <div class="col">
             <p class="fs-2">{{ user.get_full_name }}</p>
             <p class="lead">Username: {{ user.username }}</p>
-            <p class="lead">Email: {{ user.email }}</p>
+            <p class="lead">Email: {{ user.email }} {{ user.utype }}</p>
         </div>
     </div>
     <hr>

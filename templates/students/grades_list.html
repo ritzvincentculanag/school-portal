@@ -1,0 +1,41 @@
+{% block data %}
+    <p class="fs-2">Advertisements</p>
+
+    <form method="get" class="row g-3 mb-4">
+        <div class="col d-flex">
+            <label for="news_search" class="form-label"></label>
+            <input type="text" placeholder="Search" class="form-control" name="news_search" id="news_search">
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <a href="{% url 'advertisements_create' %}" class="btn btn-primary" type="submit">New advertisement</a>
+        </div>
+    </form>
+
+    <div class="row row-cols-2 row-gap-4">
+        {% for advertisement in advertisements %}
+            <div class="col">
+                <div class="card mh-100 h-100">
+                    {% if advertisement.banner %}
+                        <img style="height: 200px"
+                             src="{{ advertisement.banner.url }}"
+                             class="card-img-top object-fit-cover"
+                             alt="{{ advertisement.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ advertisement.title }}</h5>
+                        <h6 class="card-subtitle">{{ advertisement.date_pub }}</h6>
+                        <br>
+                        <p class="card-text">{{ advertisement.content|slice:":255" }}</p>
+                        <a href="{% url 'advertisements_update' advertisement.pk %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'advertisements_detail' advertisement.pk %}" class="btn btn-primary">View</a>
+                        <a href="{% url 'advertisements_delete' advertisement.pk %}" class="btn btn-danger">Delete</a>
+                    </div>
+                    <div class="card-footer">
+                        Last updated: {{ advertisement.date_mod }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

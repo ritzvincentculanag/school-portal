@@ -26,7 +26,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("students/", include("students.urls")),
     path("teachers/", include("teachers.urls")),
-    path("casheirs/", include("cashiers.urls")),
+    path("cashiers/", include("cashiers.urls")),
     path("staffs/", include("staffs.urls"))
 ]
 

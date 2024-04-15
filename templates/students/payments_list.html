@@ -40,7 +40,7 @@
                     {% for payment in payments %}
                         <tr>
                             <td>{{ payment.date_paid }}</td>
-                            <td>{{ payment.payment_category.name }}</td>
+                            <td>{{ payment.category.category }}</td>
                             <td>P{{ payment.amount }}</td>
                         </tr>
                     {% endfor %}
